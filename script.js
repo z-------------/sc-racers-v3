@@ -80,3 +80,15 @@ setInterval(function(){
     
     photoElem.src = "/assets/img/members/" + name + ".jpg";
 });
+
+/* section background images */
+
+[].slice.call(document.querySelectorAll("section[data-bg]")).forEach(function(elem){
+    var imgUrl = elem.dataset.bg;
+    
+    var bgElem = document.createElement("div");
+    bgElem.style.backgroundImage = "url(" + imgUrl + ")";
+    bgElem.classList.add("section-bg-image");
+    
+    elem.appendChild(bgElem);
+});

@@ -45,8 +45,28 @@ header {
 }
 
 section {
+    position: relative;
     padding: 50px 100px;
     width: calc(100% - 70px);
+}
+
+section[data-bg] {
+    color: #fff;
+    background-color: #000;
+}
+
+section[data-bg] > *:not(.section-bg-image) {
+    position: relative;
+    z-index: 1;
+}
+
+.section-bg-image {
+    opacity: .7;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
 h2 {
@@ -104,6 +124,41 @@ nav a.current {
     background-color: rgba(0, 0, 0, .05);
 }
 
+input, textarea, button {
+    display: block;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, .2);
+    color: #fff;
+    
+    transition-property: background, color;
+}
+
+textarea {
+    resize: vertical;
+    height: 200px;
+}
+
+button {
+    cursor: pointer;
+}
+
+input, textarea {
+    width: 100%;
+}
+
+input:focus, textarea:focus, button:focus {
+    background-color: #fff;
+    color: #333;
+    outline: none;
+}
+
+button:hover {
+    background: #ff3539;
+    color: #fff;
+}
+
 .banner-links-container {
     display: flex;
     padding: 5px;
@@ -136,7 +191,7 @@ nav a.current {
     width: 50px;
     height: 50px;
     position: absolute;
-    margin: 20px;
+    margin: 22px;
     right: 0;
     top: 0;
     
@@ -157,6 +212,7 @@ nav a.current {
 
 .flex-container {
     display: flex;
+    align-items: flex-start;
 }
 
 .flex-container > * {
