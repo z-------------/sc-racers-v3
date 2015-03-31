@@ -2,6 +2,7 @@
 
 var sectionElems = document.querySelectorAll("section");
 var asideElem = document.querySelector("aside");
+var navLinkElems = document.querySelectorAll("nav a");
 
 /* spinning logo on hover */
 
@@ -49,16 +50,24 @@ setInterval(function(){
 /* highlight nav links */
 
 setInterval(function(){
-    [].slice.call(sectionElems).forEach(function(elem){
-        var top = elem.getClientRects()[0].top;
-        var bottom = elem.getClientRects()[0].bottom;
-        
-        var navLinkElem = document.querySelector("nav a[href='#" + elem.getAttribute("id") + "']")
-        
-        if (top <= 0 && bottom > 0) {
-            navLinkElem.classList.add("current");
-        } else {
-            navLinkElem.classList.remove("current");
-        }
-    });
+    if (innerHeight + scrollY === document.body.scrollHeight) {
+        var lastNavLinkElem = document.querySelector("nav a:last-of-type");
+        [].slice.call(navLinkElems).forEach(function(elem){
+            elem.classList.remove("current");
+        });
+        lastNavLinkElem.classList.add("current");
+    } else {
+        [].slice.call(sectionElems).forEach(function(elem){
+            var top = elem.getClientRects()[0].top;
+            var bottom = elem.getClientRects()[0].bottom;
+
+            var navLinkElem = document.querySelector("nav a[href='#" + elem.getAttribute("id") + "']");
+
+            if (top <= 0 && bottom > 0) {
+                navLinkElem.classList.add("current");
+            } else {
+                navLinkElem.classList.remove("current");
+            }
+        });
+    }
 }, 100);
