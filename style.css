@@ -234,6 +234,10 @@ button:hover {
     width: 50%;
 }
 
+.flex-container > *:first-child {
+    margin-right: 30px;
+}
+
 .members-container {
     margin-top: 50px;
     text-align: center;
