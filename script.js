@@ -50,12 +50,14 @@ setInterval(function(){
 /* highlight nav links */
 
 setInterval(function(){
+    var newHash;
     if (innerHeight + scrollY === document.body.scrollHeight) {
         var lastNavLinkElem = document.querySelector("nav a:last-of-type");
         [].slice.call(navLinkElems).forEach(function(elem){
             elem.classList.remove("current");
         });
         lastNavLinkElem.classList.add("current");
+        newHash = lastNavLinkElem.getAttribute("href");
     } else {
         [].slice.call(sectionElems).forEach(function(elem){
             var top = elem.getClientRects()[0].top;
@@ -65,10 +67,15 @@ setInterval(function(){
 
             if (top <= 0 && bottom > 0) {
                 navLinkElem.classList.add("current");
+                newHash = navLinkElem.getAttribute("href");
             } else {
                 navLinkElem.classList.remove("current");
             }
         });
+    }
+    
+    if (document.querySelector("nav a.current") && location.hash.length > 1 && newHash !== location.hash) {
+        history.pushState(null, null, newHash);
     }
 }, 100);
 
