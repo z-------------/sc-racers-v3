@@ -53,8 +53,12 @@ setInterval(function(){
         var top = elem.getClientRects()[0].top;
         var bottom = elem.getClientRects()[0].bottom;
         
-        if (top <= 0) {
-            document.querySelector("nav a[href='#" + elem.getAttribute("id") + "']").classList.add("current");
+        var navLinkElem = document.querySelector("nav a[href='#" + elem.getAttribute("id") + "']")
+        
+        if (top <= 0 && bottom > 0) {
+            navLinkElem.classList.add("current");
+        } else {
+            navLinkElem.classList.remove("current");
         }
     });
 }, 100);
