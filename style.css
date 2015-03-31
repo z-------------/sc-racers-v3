@@ -286,3 +286,27 @@ button:hover {
     clear: both;
     font-size: 0.9em;
 }
+
+a.button {
+    display: block;
+    
+    transition-property: background, color;
+}
+
+a.button.big {
+    background-color: #83c4ff;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    padding-top: 170px;
+    font-size: 1.5em;
+    font-weight: 300;
+    
+    background-size: 150px;
+    background-position: 50% 20px;
+    background-image: url(/assets/img/ui/download.svg);
+}
+
+a.button.big:hover {
+    background-color: #5cb1ff;
+}
