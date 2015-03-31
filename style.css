@@ -124,6 +124,7 @@ nav a {
     color: transparent;
     background-size: 40px;
     height: 70px;
+    overflow: hidden;
     
     transition-property: box-shadow;
 }
@@ -234,7 +235,7 @@ button:hover {
 }
 
 .members-container {
-    margin: 50px 0;
+    margin-top: 50px;
     text-align: center;
 }
 
