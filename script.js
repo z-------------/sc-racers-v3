@@ -1,5 +1,15 @@
 /* globals */
 
+var xhr = function(url,callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = function(){
+        var response = this.responseText;
+        callback(response);
+    };
+    oReq.open("get", url, true);
+    oReq.send();
+};
+
 var sectionElems = document.querySelectorAll("section");
 var asideElem = document.querySelector("aside");
 var navLinkElems = document.querySelectorAll("nav a");
@@ -99,3 +109,27 @@ setInterval(function(){
     
     elem.appendChild(bgElem);
 });
+
+/* get twitter feed from twitrssme via yql */
+
+function displayTwitterStream(data){
+    console.log(data);
+}
+
+if (
+    localStorage.getItem("twitterStreamData") && 
+    new Date().getTime() - Number(localStorage.getItem("twitterStreamCacheDate")) < 600000 /* 10 minutes */
+) {
+    displayTwitterStream(JSON.parse(localStorage.getItem("twitterStreamData")));
+} else {
+    var query = "select * from rss where url='http://twitrss.me/twitter_user_to_rss/?user=SC_Racers'";
+    var yqlUrl = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(query) + "&format=json";
+    xhr(yqlUrl, function(r){
+        r = JSON.parse(r);
+        var twitterData = r.query.results;
+        displayTwitterStream(twitterData);
+        
+        localStorage.setItem("twitterStreamData", JSON.stringify(twitterData));
+        localStorage.setItem("twitterStreamCacheDate", new Date().getTime());
+    });
+}
