@@ -235,8 +235,13 @@ button:hover {
 }
 
 .flex-container > *:first-child {
-    margin-right: 30px;
+    margin-right: 25px;
 }
+
+.flex-container > *:last-child {
+    margin-left: 25px;
+}
+
 
 .flex-container > img {
     padding: 50px;
