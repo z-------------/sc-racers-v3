@@ -72,9 +72,21 @@ aside.float {
 
 nav a {
     display: block;
-    float: left;
-    width: 100%;
-    padding: 20px 10px;
+    padding-right: 70px;
+    color: transparent;
+    background-size: 40px;
+    height: 70px;
+    
+    transition-property: box-shadow;
+}
+
+nav a:hover {
+    box-shadow: inset 5px 0 rgba(0, 0, 0, .2);
+}
+
+nav a.current {
+    box-shadow: inset 5px 0 #ff7073;
+    background-color: rgba(0, 0, 0, .05);
 }
 
 .banner-links-container {
@@ -99,8 +111,8 @@ nav a {
 }
 
 .banner-link:hover {
-    background-color: #ccc;
-    color: #333;
+    background-color: #ff3539;
+    color: #fff;
 }
 
 .banner-link:after {
@@ -118,4 +130,12 @@ nav a {
 
 .banner-link:hover:after {
     transform: translateX(10px);
+}
+
+.banner-link.twitter:hover {
+    background-color: #55acee;
+}
+
+.banner-link.facebook:hover {
+    background-color: #3B5998;
 }
