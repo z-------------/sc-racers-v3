@@ -231,7 +231,7 @@ button:hover {
 
 .flex-container > * {
     flex-shrink: 0;
-    width: 50%;
+    width: calc(50% - 25px);
 }
 
 .flex-container > *:first-child {
