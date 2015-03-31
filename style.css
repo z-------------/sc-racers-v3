@@ -141,7 +141,7 @@ nav a.current {
 input, textarea, button {
     display: block;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, .2);
     color: #fff;
