@@ -71,3 +71,12 @@ setInterval(function(){
         });
     }
 }, 100);
+
+/* automatic member photos */
+
+[].slice.call(document.querySelectorAll(".members-container li")).forEach(function(elem){
+    var photoElem = elem.querySelector(".member-photo");
+    var name = elem.querySelector(".member-name").textContent;
+    
+    photoElem.src = "/assets/img/members/" + name + ".jpg";
+});

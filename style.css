@@ -28,6 +28,7 @@ body {
     font-size: 17px;
     color: #333;
     overflow-x: hidden;
+    line-height: 1.5;
 }
 
 header {
@@ -52,6 +53,20 @@ h2 {
     font-size: 3em;
     font-weight: 100;
     text-align: center;
+    margin: 30px 0;
+}
+
+p {
+    margin: 20px auto;
+    max-width: 700px;
+}
+
+p:first-child {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
 }
 
 aside {
@@ -138,4 +153,57 @@ nav a.current {
 
 .banner-link.facebook:hover {
     background-color: #3B5998;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container > * {
+    flex-shrink: 0;
+    width: 50%;
+}
+
+.members-container {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.members-container li {
+    display: inline-block;
+    width: 400px;
+    vertical-align: top;
+    margin: 0 30px 30px 0;
+    text-align: left;
+}
+
+.member-name, .member-role {
+    line-height: 1;
+}
+
+.member-name {
+    font-size: 1.5em;
+    margin: 25px 0 10px 0;
+}
+
+.member-role {
+    color: rgba(0, 0, 0, .6);
+    font-weight: 400;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.member-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.member-bio {
+    margin-top: 20px;
+    clear: both;
+    font-size: 0.9em;
 }
