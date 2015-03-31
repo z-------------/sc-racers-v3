@@ -17,3 +17,20 @@ transition: transform 3s;\
         svgDoc.querySelector("svg").appendChild(styleElem);
     });
 })();
+
+/* floating nav */
+
+setInterval(function(){
+    if (window.scrollY >= 500) {
+        document.querySelector("aside").classList.add("float");
+    } else {
+        document.querySelector("aside").classList.remove("float");
+    }
+}, 50);
+
+/* nav icons */
+
+[].slice.call(document.querySelectorAll("[data-icon]")).forEach(function(elem){
+    var iconURL = "/assets/img/ui/nav-icon/" + elem.dataset.icon + ".svg";
+    elem.style.backgroundImage = "url(" + iconURL + ")";
+});
