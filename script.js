@@ -149,6 +149,10 @@ function displayTwitterStream(data){
             });
         }
         
+        [].slice.call(elem.querySelectorAll("a")).forEach(function(elem){
+            elem.setAttribute("target", "_blank");
+        });
+        
         newsElem.appendChild(elem);
     });
         
