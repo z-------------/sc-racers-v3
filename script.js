@@ -13,6 +13,19 @@ var xhr = function(url,callback) {
 var sectionElems = document.querySelectorAll("section");
 var asideElem = document.querySelector("aside");
 var navLinkElems = document.querySelectorAll("nav a");
+var newsElem = document.querySelector(".news-container");
+
+var encodeHTML = function(str){
+    var elem = document.createElement("div");
+    elem.textContent = str;
+    return elem.innerHTML;
+};
+
+var decodeHTML = function(str){
+    var elem = document.createElement("div");
+    elem.innerHTML = str;
+    return elem.textContent;
+};
 
 /* spinning logo on hover */
 
@@ -110,10 +123,24 @@ setInterval(function(){
     elem.appendChild(bgElem);
 });
 
-/* get twitter feed from twitrssme via yql */
+/* get twitter feed from queryfeed via yql */
 
 function displayTwitterStream(data){
     console.log(data);
+    
+    data.forEach(function(post){
+        var elem = document.createElement("li");
+        
+        var body = decodeHTML(post.description);
+        if (body.indexOf("http://t.co/") !== -1) body = body.substring(0, body.lastIndexOf("http://t.co/"));
+        
+        elem.innerHTML = "<p>" + twttr.txt.autoLink(body) + "</p>";
+        if (post.enclosure && post.enclosure.type === "image/png") {
+            elem.innerHTML = "<img src='" + post.enclosure.url + "'>" + elem.innerHTML;
+        }
+        
+        newsElem.appendChild(elem);
+    });
 }
 
 if (
@@ -122,11 +149,11 @@ if (
 ) {
     displayTwitterStream(JSON.parse(localStorage.getItem("twitterStreamData")));
 } else {
-    var query = "select * from rss where url='http://twitrss.me/twitter_user_to_rss/?user=SC_Racers'";
+    var query = "select * from rss where url='http://www.queryfeed.net/twitter?q=from%3ASC_Racers'";
     var yqlUrl = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(query) + "&format=json";
     xhr(yqlUrl, function(r){
         r = JSON.parse(r);
-        var twitterData = r.query.results;
+        var twitterData = r.query.results.item;
         displayTwitterStream(twitterData);
         
         localStorage.setItem("twitterStreamData", JSON.stringify(twitterData));
