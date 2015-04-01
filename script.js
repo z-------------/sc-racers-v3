@@ -125,6 +125,13 @@ setInterval(function(){
 
 /* get twitter feed from queryfeed via yql */
 
+function layoutNewsMsnry(){
+    newsMsnry = new Masonry(newsElem, {
+        isFitWidth: true,
+        gutter: 10
+    });
+}
+
 function displayTwitterStream(data){
     console.log(data);
     
@@ -137,10 +144,15 @@ function displayTwitterStream(data){
         elem.innerHTML = "<p>" + twttr.txt.autoLink(body) + "</p>";
         if (post.enclosure && post.enclosure.type === "image/png") {
             elem.innerHTML = "<img src='" + post.enclosure.url + "'>" + elem.innerHTML;
+            elem.querySelector("img").addEventListener("load", function(){
+                layoutNewsMsnry();
+            });
         }
         
         newsElem.appendChild(elem);
     });
+        
+    layoutNewsMsnry();
 }
 
 if (

@@ -63,6 +63,10 @@ section {
     width: calc(100% - 70px);
 }
 
+section.wide {
+    padding: 0;
+}
+
 section[data-bg] {
     color: #fff;
     background-color: #000;
@@ -177,6 +181,10 @@ button:hover {
     display: flex;
     padding: 5px;
     width: calc(100% - 70px);
+}
+
+section.wide .banner-links-container {
+    width: 100%;
 }
 
 .banner-link {
@@ -314,4 +322,27 @@ a.button.big {
 
 a.button.big:hover {
     background-color: #5cb1ff;
+}
+
+.news-container {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.news-container li {
+    background-color: #fff;
+    display: block;
+    width: 350px;
+    margin: 5px 0;
+    text-align: left;
+}
+
+.news-container p {
+    padding: 20px;
+    margin: 0;
+}
+
+.news-container img {
+    display: block;
 }
