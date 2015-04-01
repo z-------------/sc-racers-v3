@@ -369,3 +369,14 @@ footer {
     background-size: contain;
     background-image: url(/assets/img/logo.svg);
 }
+
+.initialism-container {
+    background-color: #ff3539;
+    color: #fff;
+    font-size: 3em;
+    font-weight: 300;
+}
+
+.initialism-container span > span {
+    font-weight: 700;
+}

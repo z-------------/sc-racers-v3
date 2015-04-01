@@ -15,6 +15,9 @@ var asideElem = document.querySelector("aside");
 var navLinkElems = document.querySelectorAll("nav a");
 var newsElem = document.querySelector(".news-container");
 
+var initialismLetterElem =  document.querySelector(".initialism-letter");
+var initialismWordElem =  document.querySelector(".initialism-word");
+
 var encodeHTML = function(str){
     var elem = document.createElement("div");
     elem.textContent = str;
@@ -26,6 +29,11 @@ var decodeHTML = function(str){
     elem.innerHTML = str;
     return elem.textContent;
 };
+
+var initialismWords = [
+    "speed", "spirit", "science", "innovation",
+    "style"
+];
 
 /* spinning logo on hover */
 
@@ -176,3 +184,11 @@ if (
         localStorage.setItem("twitterStreamCacheDate", new Date().getTime());
     });
 }
+
+/* initialisms */
+
+initialismWords.forEach(function(word){
+    var elem = document.createElement("div");
+    elem.textContent = word;
+    initialismWordElem.appendChild(elem);
+});
