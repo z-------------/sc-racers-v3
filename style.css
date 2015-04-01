@@ -60,6 +60,7 @@ p a:hover {
 section {
     position: relative;
     padding: 50px 100px;
+    padding-bottom: 100px;
     width: calc(100% - 70px);
 }
 
