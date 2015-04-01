@@ -68,6 +68,10 @@ section.wide {
     padding-right: 0;
 }
 
+section.no-bottom-padding {
+    padding-bottom: 0;
+}
+
 section[data-bg] {
     color: #fff;
     background-color: #000;
