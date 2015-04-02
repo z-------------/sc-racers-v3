@@ -80,33 +80,44 @@ setInterval(function(){
 
 /* highlight nav links */
 
-setInterval(function(){
-    var newHash;
+function currentSection(){
+    var returnVal = null;
+    
     if (innerHeight + scrollY === document.body.scrollHeight) {
-        var lastNavLinkElem = document.querySelector("nav a:last-of-type");
-        [].slice.call(navLinkElems).forEach(function(elem){
-            elem.classList.remove("current");
-        });
-        lastNavLinkElem.classList.add("current");
-        newHash = lastNavLinkElem.getAttribute("href");
+        returnVal = document.querySelector("section:last-of-type").getAttribute("id");
+        
     } else {
         [].slice.call(sectionElems).forEach(function(elem){
             var top = elem.getClientRects()[0].top;
             var bottom = elem.getClientRects()[0].bottom;
 
-            var navLinkElem = document.querySelector("nav a[href='#" + elem.getAttribute("id") + "']");
-
             if (top <= 0 && bottom > 0) {
-                navLinkElem.classList.add("current");
-                newHash = navLinkElem.getAttribute("href");
-            } else {
-                navLinkElem.classList.remove("current");
+                returnVal = elem.getAttribute("id");
             }
         });
     }
     
-    if (document.querySelector("nav a.current") && location.hash.length > 1 && newHash !== location.hash) {
-        history.pushState(null, null, newHash);
+    return returnVal;
+}
+
+setInterval(function(){
+    var id = currentSection();
+    
+    if (id && location.hash !== "#" + id) {
+        document.title = document.querySelector("#" + id + " h2").textContent + " - SC Racers";
+        history.pushState(null, null, "#" + id);
+        
+        [].slice.call(navLinkElems).forEach(function(elem){
+            elem.classList.remove("current");
+        });
+        document.querySelector("nav a[href='#" + id + "']").classList.add("current");
+    } else if (!id && location.href.indexOf("#") !== -1) {
+        document.title = "SC Racers";
+        history.pushState("", document.title, location.pathname + location.search);
+        
+        [].slice.call(navLinkElems).forEach(function(elem){
+            elem.classList.remove("current");
+        });
     }
 }, 100);
 
