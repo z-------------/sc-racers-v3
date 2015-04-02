@@ -32,7 +32,7 @@ var decodeHTML = function(str){
 
 var initialismWords = [
     "speed", "spirit", "science", "innovation",
-    "style"
+    "style", "simplicity"
 ];
 
 /* spinning logo on hover */
