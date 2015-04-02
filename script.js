@@ -103,7 +103,7 @@ function currentSection(){
 setInterval(function(){
     var id = currentSection();
     
-    if (id && location.hash !== "#" + id) {
+    if (id && (location.hash !== "#" + id || !document.querySelector("nav a.current"))) {
         document.title = document.querySelector("#" + id + " h2").textContent + " - SC Racers";
         history.pushState(null, null, "#" + id);
         
