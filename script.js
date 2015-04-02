@@ -187,8 +187,25 @@ if (
 
 /* initialisms */
 
-initialismWords.forEach(function(word){
+function initialismChange(){
+    var wordElems = [].slice.call(initialismWordElem.children);
+    
+    if (initialismWordElem.querySelector(".current")) {
+        var oldWordElem = initialismWordElem.querySelector(".current");
+        var newWordElem = wordElems[wordElems.indexOf(oldWordElem) + 1] || wordElems[0];
+        
+        oldWordElem.classList.remove("current");
+        newWordElem.classList.add("current");
+    } else {
+        wordElems[0].classList.add("current");
+    }
+}
+
+initialismWords.sort(function(){return Math.round(Math.random())}).forEach(function(word){
     var elem = document.createElement("div");
     elem.textContent = word;
     initialismWordElem.appendChild(elem);
 });
+
+initialismChange();
+setInterval(initialismChange, 5000);

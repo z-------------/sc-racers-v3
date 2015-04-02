@@ -373,10 +373,56 @@ footer {
 .initialism-container {
     background-color: #ff3539;
     color: #fff;
-    font-size: 3em;
+    font-size: 4em;
     font-weight: 300;
+    padding: 100px;
+    width: calc(100% + 200px);
+    max-width: none;
+    margin-top: 50px;
+    margin-left: -100px;
+    line-height: 1;
 }
 
-.initialism-container span > span {
+.initialism-container div {
+    display: flex;
+    align-items: center;
+}
+
+.initialism-container div > div {
     font-weight: 700;
+    vertical-align: middle;
+}
+
+.initialism-letter {
+    font-family: "Oswald", Impact, sans-serif;
+    font-size: 5em;
+    font-weight: 700;
+    margin-right: 30px;
+}
+
+.initialism-word {
+    overflow: hidden;
+    height: 2em;
+    position: relative;
+    flex-grow: 1;
+    margin-left: 16px;
+}
+
+.initialism-word div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 0.5em;
+    opacity: 0;
+    pointer-events: none;
+    
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+.initialism-word div.current {
+    opacity: 1;
+    pointer-events: auto;
+    
+    transition-delay: 1s;
 }
