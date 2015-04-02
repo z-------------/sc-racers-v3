@@ -58,7 +58,7 @@ transition: transform 3s;\
 /* floating nav */
 
 setInterval(function(){
-    if (window.scrollY >= 500) {
+    if (window.pageYOffset >= 500) {
         asideElem.classList.add("float");
     } else {
         asideElem.classList.remove("float");
@@ -83,7 +83,7 @@ setInterval(function(){
 function currentSection(){
     var returnVal = null;
     
-    if (innerHeight + scrollY === document.body.scrollHeight) {
+    if (innerHeight + window.pageYOffset === document.body.scrollHeight) {
         returnVal = document.querySelector("section:last-of-type").getAttribute("id");
         
     } else {
