@@ -438,3 +438,8 @@ footer {
     
     transition-delay: 1s;
 }
+
+.comic-sans {
+    font-family: "Comic Sans MS", sans-serif;
+    color: #ff3539;
+}
