@@ -103,9 +103,7 @@ function scrollSpy(target){
     var id = target || currentSection();
     console.log(id);
     if (id && (location.hash !== "#" + id || !document.querySelector("nav a.current") || target)) {
-        if (target) {
-            history.pushState(null, null, "#" + id);
-        }
+        history.pushState(null, null, "#" + id);
         document.title = document.querySelector("#" + id + " h2").textContent + " - SC Racers";
         [].slice.call(navLinkElems).forEach(function(elem){
             elem.classList.remove("current");
