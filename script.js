@@ -99,13 +99,14 @@ function currentSection(){
     return returnVal;
 }
 
-setInterval(function(){
-    var id = currentSection();
-    
-    if (id && (location.hash !== "#" + id || !document.querySelector("nav a.current"))) {
+function scrollSpy(target){
+    var id = target || currentSection();
+    console.log(id);
+    if (id && (location.hash !== "#" + id || !document.querySelector("nav a.current") || target)) {
+        if (target) {
+            history.pushState(null, null, "#" + id);
+        }
         document.title = document.querySelector("#" + id + " h2").textContent + " - SC Racers";
-        history.pushState(null, null, "#" + id);
-        
         [].slice.call(navLinkElems).forEach(function(elem){
             elem.classList.remove("current");
         });
@@ -113,10 +114,16 @@ setInterval(function(){
     } else if (!id && location.href.indexOf("#") !== -1) {
         document.title = "SC Racers";
         history.pushState("", document.title, location.pathname + location.search);
-        
+
         [].slice.call(navLinkElems).forEach(function(elem){
             elem.classList.remove("current");
         });
+    }
+}
+
+setInterval(function(){
+    if (!smoothScrolling) {
+        scrollSpy();
     }
 }, 100);
 
@@ -221,3 +228,20 @@ initialismWords.sort(function(){return Math.round(Math.random())}).forEach(funct
 
 initialismChange();
 setInterval(initialismChange, 5000);
+
+/* smoothScroll stuff */
+
+var smoothScrolling = false;
+
+var smoothScrollOptions = {
+    callbackBefore: function(toggle, anchor) {
+        smoothScrolling = true;
+        console.log("calling scrollSpy()");
+        scrollSpy(anchor.substring(1));
+        console.log("start");
+    },
+    callbackAfter: function() {
+        smoothScrolling = false;
+        console.log("end");
+    }
+};
