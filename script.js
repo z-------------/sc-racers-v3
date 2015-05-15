@@ -85,13 +85,12 @@ function currentSection(){
     
     if (innerHeight + window.pageYOffset === document.body.scrollHeight) {
         returnVal = document.querySelector("section:last-of-type").getAttribute("id");
-        
     } else {
         [].slice.call(sectionElems).forEach(function(elem){
             var top = elem.getClientRects()[0].top;
             var bottom = elem.getClientRects()[0].bottom;
 
-            if (top <= 0 && bottom > 0) {
+            if (top <= 5 && bottom > 0) {
                 returnVal = elem.getAttribute("id");
             }
         });
@@ -152,7 +151,9 @@ function layoutNewsMsnry(){
 }
 
 function displayTwitterStream(data){
-    console.log(data);
+    if (!Array.isArray(data)) {
+        data = [data];
+    }
     
     data.forEach(function(post){
         var elem = document.createElement("li");
