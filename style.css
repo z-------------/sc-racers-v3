@@ -119,7 +119,7 @@ aside {
     background-color: #fff;
     width: 70px;
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
     z-index: 2;
 }
 
@@ -458,15 +458,47 @@ footer {
         width: 100%;
     }
     
+    .flex-container > *:last-child {
+        margin-left: 0;
+    }
+    
     aside {
         top: 0;
         left: 0;
         width: 100%;
         height: 70px;
+        overflow-x: scroll;
     }
     
     aside nav a {
         display: inline-block;
         width: 70px;
+    }
+    
+    .banner-links-container {
+        width: 100%;
+        display: block;
+    }
+    
+    .banner-link {
+        width: 100%;
+        display: block;
+    }
+    
+    .initialism-container {
+        display: none;
+    }
+    
+    .logo {
+        width: calc(100% - 50px)
+    }
+    
+    header {
+        height: 300px;
+        padding-top: 60px;
+    }
+    
+    nav {
+        white-space: nowrap;
     }
 }
