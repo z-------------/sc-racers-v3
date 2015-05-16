@@ -247,18 +247,39 @@ var smoothScrollOptions = {
 /* insert 'sensitive' contact info */
 
 var contactInfo = {
-    phonenumber: {
+    phone: {
         href: "tel:85253660920",
-        textContent: "+852 5366 0920"
+        $vars: {
+            phone: "+852 5366 0920"
+        }
+    },
+    email: {
+        href: "mailto:sc.racers.f1@gmail.com",
+        $vars: {
+            email: "sc.racers.f1@gmail.com"
+        }
     }
 };
 
 Object.keys(contactInfo).forEach(function(key){
-    var targets = document.querySelectorAll(".contact_" + key);
     var info = contactInfo[key];
+    var targets = document.querySelectorAll(".contact_" + key);
+    
+    var attrKeys = Object.keys(info).filter(function(key){
+        return key !== "$vars";
+    });
+    
+    var varKeys = Object.keys(info.$vars);
+    
     [].slice.call(targets).forEach(function(elem){
-        Object.keys(info).forEach(function(attr){
-            elem[attr] = info[attr];
+        attrKeys.forEach(function(attrKey){
+            elem[attrKey] = info[attrKey];
+        });
+        
+        varKeys.forEach(function(varKey){
+            var varVal = info.$vars[varKey];
+            
+            elem.textContent = elem.textContent.replace(new RegExp("{" + varKey + "}", "g"), varVal);
         });
     });
 });

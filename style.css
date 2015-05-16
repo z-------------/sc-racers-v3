@@ -112,6 +112,15 @@ p:last-child {
     margin-bottom: 0;
 }
 
+ul, ol {
+    margin-left: 2em;
+}
+
+ul.nobullet, ol.nobullet {
+    margin-left: 0;
+    list-style: none;
+}
+
 aside {
     position: absolute;
     top: 500px;
@@ -198,6 +207,7 @@ button:hover {
 
 .banner-links-container {
     display: flex;
+    flex-wrap: wrap;
     padding: 5px;
     width: calc(100% - 70px);
 }
