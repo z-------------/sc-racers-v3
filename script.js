@@ -243,3 +243,22 @@ var smoothScrollOptions = {
         console.log("end");
     }
 };
+
+/* insert 'sensitive' contact info */
+
+var contactInfo = {
+    phonenumber: {
+        href: "tel:85253660920",
+        textContent: "+852 5366 0920"
+    }
+};
+
+Object.keys(contactInfo).forEach(function(key){
+    var targets = document.querySelectorAll(".contact_" + key);
+    var info = contactInfo[key];
+    [].slice.call(targets).forEach(function(elem){
+        Object.keys(info).forEach(function(attr){
+            elem[attr] = info[attr];
+        });
+    });
+});
