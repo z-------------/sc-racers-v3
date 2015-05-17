@@ -261,8 +261,8 @@ section.wide .banner-links-container {
 .member-role {
   color: rgba(0, 0, 0, 0.6);
   font-weight: 400;
-  font-size: 1.2em;
-  font-style: italic; }
+  text-transform: uppercase;
+  letter-spacing: 1px; }
 
 .member-photo {
   width: 100px;
