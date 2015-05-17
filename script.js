@@ -81,27 +81,62 @@ setInterval(function(){
 /* highlight nav links */
 
 function currentSection(){
-    var returnVal = null;
+    var sections = document.querySelectorAll("section");
     
-    if (innerHeight + window.pageYOffset === document.body.scrollHeight) {
-        returnVal = document.querySelector("section:last-of-type").getAttribute("id");
-    } else {
-        [].slice.call(sectionElems).forEach(function(elem){
-            var top = elem.getClientRects()[0].top;
-            var bottom = elem.getClientRects()[0].bottom;
+    var contenders = [];
+    
+    for (var s = 0; s < sections.length; s++) {
+        var elem = sections[s];
+        var item = {
+            elem: elem,
+            onScreen: (function(elem){
+                // elem array
+                var eArr = [];
+                for (var e = elem.offsetTop; e <= elem.offsetTop + elem.offsetHeight; e++) {
+                    eArr.push(e);
+                }
 
-            if (top <= 5 && bottom > 0) {
-                returnVal = elem.getAttribute("id");
-            }
-        });
+                // screen array
+                var sArr = [];
+                for (var s = window.scrollY; s <= window.scrollY + window.innerHeight; s++) {
+                    sArr.push(s);
+                }
+
+                // calculate overlap
+                var overlap = [];
+
+                eArr.forEach(function(v){
+                    if (sArr.indexOf(v) !== -1) {
+                        overlap.push(v)
+                    }
+                });
+
+                return (overlap[overlap.length - 1] - overlap[0])
+            })(elem)
+        };
+        contenders.push(item);
     }
     
-    return returnVal;
+    contenders = contenders.filter(function(item){
+        return isFinite(item.onScreen);
+    });
+    
+    contenders.sort(function(a, b){
+        if (a.onScreen > b.onScreen) {
+            return -1;
+        } else if (b.onScreen > a.onScreen) {
+            return 1;
+        }
+    });
+    
+    if (contenders[0]) {
+        return contenders[0].elem.getAttribute("id");
+    }
+    return false;
 }
 
 function scrollSpy(target){
     var id = target || currentSection();
-    console.log(id);
     if (id && (location.hash !== "#" + id || !document.querySelector("nav a.current") || target)) {
         history.pushState(null, null, "#" + id);
         document.title = document.querySelector("#" + id + " h2").textContent + " - SC Racers";
@@ -234,21 +269,17 @@ var smoothScrolling = false;
 var smoothScrollOptions = {
     callbackBefore: function(toggle, anchor) {
         smoothScrolling = true;
-        console.log("calling scrollSpy()");
         scrollSpy(anchor.substring(1));
-        console.log("start");
     },
     callbackAfter: function() {
         smoothScrolling = false;
-        console.log("end");
     }
 };
 
 /* insert 'sensitive' contact info */
 
 var contactInfo = {
-    phone: {
-        href: "tel:85253660920",
+    whatsapp: {
         $vars: {
             phone: "+852 5366 0920"
         }

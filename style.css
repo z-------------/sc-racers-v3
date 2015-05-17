@@ -231,12 +231,26 @@ section.wide .banner-links-container {
     transition-property: background, color;
 }
 
-.banner-link:hover {
+.banner-link[href]:hover {
     background-color: #ff3539;
     color: #fff;
 }
 
-.banner-link:after {
+.banner-link.hasicon {
+    padding-left: 90px;
+}
+
+.banner-link.hasicon:before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    margin: 28px;
+    left: 0;
+    top: 0;
+}
+
+.banner-link[href]:after {
     content: "";
     background-image: url(/assets/img/ui/chev-right.svg);
     width: 50px;
@@ -249,16 +263,56 @@ section.wide .banner-links-container {
     transition-property: transform;
 }
 
-.banner-link:hover:after {
+.banner-link[href]:hover:after {
     transform: translateX(10px);
 }
 
-.banner-link.twitter:hover {
+.banner-link[href].twitter:hover {
     background-color: #55acee;
 }
 
-.banner-link.facebook:hover {
+.banner-link.hasicon.twitter:before {
+    background-image: url(/assets/img/contact/twitter-color.svg);
+}
+
+.banner-link[href].hasicon.twitter:hover:before {
+    background-image: url(/assets/img/contact/twitter-white.svg);
+}
+
+.banner-link[href].facebook:hover {
     background-color: #3B5998;
+}
+
+.banner-link.hasicon.facebook:before {
+    background-image: url(/assets/img/contact/facebook-color.svg);
+}
+
+.banner-link[href].hasicon.facebook:hover:before {
+    background-image: url(/assets/img/contact/facebook-white.svg);
+}
+
+.banner-link[href].email:hover {
+    background-color: #ECB42E;
+}
+
+.banner-link.hasicon.email:before {
+    background-image: url(/assets/img/contact/email-color.svg);
+}
+
+.banner-link[href].hasicon.email:hover:before {
+    background-image: url(/assets/img/contact/email-white.svg);
+}
+
+.banner-link[href].whatsapp:hover {
+    background-color: #2AB200;
+}
+
+.banner-link.hasicon.whatsapp:before {
+    background-image: url(/assets/img/contact/whatsapp-color.svg);
+}
+
+.banner-link[href].hasicon.whatsapp:hover:before {
+    background-image: url(/assets/img/contact/whatsapp-white.svg);
 }
 
 .flex-container {
