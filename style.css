@@ -51,10 +51,13 @@ a {
 
 p a {
     color: #ff3539;
+    
+    transition-property: color, background;
 }
 
 p a:hover {
-    border-bottom: solid 1px #ff3539;
+    color: #fff;
+    background-color: #ff3539;
 }
 
 section {
