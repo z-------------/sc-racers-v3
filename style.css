@@ -140,7 +140,7 @@ button {
   cursor: pointer;
   position: relative;
   padding-right: 40px; }
-  button :after {
+  button:after {
     content: "";
     position: absolute;
     right: 0;

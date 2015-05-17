@@ -187,7 +187,7 @@ button {
     position: relative;
     padding-right: 40px;
     
-    :after {
+    &:after {
         content: "";
         position: absolute;
         right: 0;
