@@ -286,43 +286,15 @@ section.wide .banner-links-container {
             top: 0;
         }
         
-        &.twitter {
-            &:before {
-                background-image: url(/assets/img/contact/twitter-color.svg);
-            }
-            
-            &[href]:hover:before {
-                background-image: url(/assets/img/contact/twitter-white.svg);
-            }
-        }
-        
-        &.facebook {
-            &:before {
-                background-image: url(/assets/img/contact/facebook-color.svg);
-            }
-            
-            &[href]:hover:before {
-                background-image: url(/assets/img/contact/facebook-white.svg);
-            }
-        }
-        
-        &.email {
-            &:before {
-                background-image: url(/assets/img/contact/email-color.svg);
-            }
-            
-            &[href]:hover:before {
-                background-image: url(/assets/img/contact/email-white.svg);
-            }
-        }
-        
-        &.whatsapp {
-            &:before {
-                background-image: url(/assets/img/contact/whatsapp-color.svg);
-            }
-            
-            &[href]:hover:before {
-                background-image: url(/assets/img/contact/whatsapp-white.svg);
+        @each $medium in twitter, facebook, email, whatsapp {        
+            &.#{$medium} {
+                &:before {
+                    background-image: url(/assets/img/contact/#{$medium}-color.svg);
+                }
+
+                &[href]:hover:before {
+                    background-image: url(/assets/img/contact/#{$medium}-white.svg);
+                }
             }
         }
     }
