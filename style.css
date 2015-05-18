@@ -290,7 +290,7 @@ a.button {
     font-weight: 300;
     background-size: 150px;
     background-position: 50% 20px;
-    background-image: url(/assets/img/ui/download.svg); }
+    background-image: url(/assets/img/ui/file.svg); }
     a.button.big:hover {
       background-color: #5cb1ff; }
 
