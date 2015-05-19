@@ -30,11 +30,6 @@ var decodeHTML = function(str){
     return elem.textContent;
 };
 
-var initialismWords = [
-    "speed", "spirit", "science", "innovation",
-    "style", "simplicity"
-];
-
 /* spinning logo on hover */
 
 (function(){
@@ -253,14 +248,8 @@ function initialismChange(){
     }
 }
 
-initialismWords.sort(function(){return Math.round(Math.random())}).forEach(function(word){
-    var elem = document.createElement("div");
-    elem.textContent = word;
-    initialismWordElem.appendChild(elem);
-});
-
 initialismChange();
-setInterval(initialismChange, 5000);
+setInterval(initialismChange, 2000);
 
 /* smoothScroll stuff */
 
