@@ -1,5 +1,7 @@
 .sass-cache
 *.css.map
+
 style.css
+
 /google*.html
 tracking.js
