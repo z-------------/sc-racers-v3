@@ -240,11 +240,19 @@ function initialismChange(){
     if (initialismWordElem.querySelector(".current")) {
         var oldWordElem = initialismWordElem.querySelector(".current");
         var newWordElem = wordElems[wordElems.indexOf(oldWordElem) + 1] || wordElems[0];
+        var nextWordElem = wordElems[wordElems.indexOf(newWordElem) + 1] || wordElems[0];
         
         oldWordElem.classList.remove("current");
+        oldWordElem.classList.add("prev");
+        
+        newWordElem.classList.remove("next");
         newWordElem.classList.add("current");
+        
+        nextWordElem.classList.remove("prev");
+        nextWordElem.classList.add("next");
     } else {
         wordElems[0].classList.add("current");
+        wordElems[1].classList.add("next");
     }
 }
 

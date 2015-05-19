@@ -479,14 +479,16 @@ footer {
         opacity: 0;
         pointer-events: none;
 
-        transition-property: opacity;
+        transition-property: opacity, transform;
         transition-duration: 1s;
         
         &.current {
             opacity: 1;
             pointer-events: auto;
-
-            transition-delay: 1s;
+        }
+        
+        &.prev {
+            transform: translateY(50px);
         }
     }
 }
