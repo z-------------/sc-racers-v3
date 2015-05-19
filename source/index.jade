@@ -25,6 +25,7 @@ html
         .banner-links-container
             a.banner-link(data-scroll="", href="#f1is") What is F1 In Schools?
             a.banner-link(data-scroll="", href="#support-us") Sponsorship
+        
         section#team.no-bottom-padding
             h2 Who are we?
             p.
@@ -92,11 +93,12 @@ html
                         | Learn more at the 
                         a(href="http://www.f1inschools.com/", target="_blank") F1 in Schools website
                         | .
+        
         section#support-us
-            //
-                <h2>Our sponsors</h2>
-                <p>We are proud to be working with these great companies and organizations and we are very grateful for their support.</p>
-                <div class="sponsors-container"></div>
+            // h2 Our sponsors
+            //p.
+            //    We are proud to be working with these great companies and organizations and we are very grateful for their support.
+            //.sponsors-container
             h2 Support us
             .flex-container
                 div
@@ -112,6 +114,7 @@ html
                     p.
                         We would be very grateful if you would consider sponsoring us, six students from Hong Kong, and help us to succeed in our quest for success in F1 in Schools.
                 a.button.big(href="/assets/docs/Sponsorship%20letter.pdf", target="_blank") View sponsorship letter
+        
         section#contact(data-bg="/assets/img/racetrack-blurred.jpg")
             h2 Contact us
             .flex-container
@@ -122,6 +125,7 @@ html
                     input(type="text", name="subject", placeholder="Subject")
                     textarea(name="body", placeholder="Message", required="")
                     button(title="This will open your default email client.") Send
+        
         .banner-links-container
             a.banner-link.email.hasicon.contact_email {email}
             a.banner-link.whatsapp.hasicon.contact_whatsapp {phone}
