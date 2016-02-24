@@ -434,6 +434,14 @@ footer {
 
     background-size: contain;
     background-image: url(/assets/img/logo/logo.svg);
+
+    transition-property: transform;
+    transition-duration: 1s;
+    transform-origin: calc(50% + 2px) 50%;
+
+    &:hover {
+        transform: rotate(2turn);
+    }
 }
 
 .initialism-container {
