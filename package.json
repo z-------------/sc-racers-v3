@@ -1,0 +1,26 @@
+{
+  "name": "sc-racers-v3",
+  "version": "2.0.0",
+  "description": "Version 3 of SC Racers' website. WIP; coming soon!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z-------------/sc-racers-v3.git"
+  },
+  "author": "Zack Guard <zacharyguard@gmail.com> (http://zacharyguard.co.nf)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/z-------------/sc-racers-v3/issues"
+  },
+  "homepage": "https://github.com/z-------------/sc-racers-v3#readme",
+  "dependencies": {
+    "autoprefixer-core": "^6.0.1",
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-sass": "^2.2.0"
+  }
+}
