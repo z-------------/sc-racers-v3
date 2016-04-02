@@ -1,6 +1,6 @@
 # SC Racers
 
-Version 3 of SC Racers' website. WIP; coming soon!
+Version 3 of SC Racers' website.
 
 ![SC Racers logo](http://i.imgur.com/dLuN8KD.png)
 
