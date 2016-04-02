@@ -144,16 +144,28 @@ html
                 span.cursor-help(title="by that, we mean Zack made it") SC Racers themselves
                 | .
             p
-                a(href="https://www.google.com/fonts/specimen/Titillium+Web", target="_blank") Titillium Web font by Accademia di Belle Arti di Urbino
-                | , 
-                a(href="http://masonry.desandro.com", target="_blank") Masonry by desandro
-                | , 
-                a(href="https://github.com/twitter/twitter-text", target="_blank") Twitter Text Library by Twitter
-                | , 
-                a(href="https://github.com/cferdinandi/smooth-scroll", target="_blank") Smooth Scroll by cferdinandi
-                | , 
-                a(href="https://google.github.io/material-design-icons", target="_blank") Material Design icons by Google
-                | .
+                -
+                    var credits = [{
+                        link: "https://www.google.com/fonts/specimen/Titillium+Web",
+                        text: "Titillium Web font by Accademia di Belle Arti di Urbino"
+                    }, {
+                        link: "http://masonry.desandro.com",
+                        text: "Masonry by desandro"
+                    }, {
+                        link: "https://github.com/twitter/twitter-text",
+                        text: "Twitter Text Library by Twitter"
+                    }, {
+                        link: "https://github.com/cferdinandi/smooth-scroll",
+                        text: "Smooth Scroll by cferdinandi"
+                    }, {
+                        link: "https://google.github.io/material-design-icons",
+                        text: "Material Design icons by Google"
+                    }]
+                each credit, i in credits
+                    - var endingChar = ","
+                    - if (i === credits.length - 1) endingChar = "."
+                    a(href=credit.link, target="_blank")= credit.text
+                    span #{endingChar + " "}
             p
                 | In the spirit of openness, the code is 
                 a(href="https://github.com/z-------------/sc-racers-v3/", target="_blank") all on GitHub
