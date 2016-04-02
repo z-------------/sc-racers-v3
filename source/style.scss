@@ -496,7 +496,7 @@ footer {
         pointer-events: none;
 
         transition-property: opacity, transform;
-        transition-duration: 1s;
+        transition-duration: 100ms;
         transition-timing-function: ease-in;
 
         &.current {

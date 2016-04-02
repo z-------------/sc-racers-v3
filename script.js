@@ -77,9 +77,9 @@ setInterval(function(){
 
 function currentSection(){
     var sections = document.querySelectorAll("section");
-    
+
     var contenders = [];
-    
+
     for (var s = 0; s < sections.length; s++) {
         var elem = sections[s];
         var item = {
@@ -111,11 +111,11 @@ function currentSection(){
         };
         contenders.push(item);
     }
-    
+
     contenders = contenders.filter(function(item){
         return isFinite(item.onScreen);
     });
-    
+
     contenders.sort(function(a, b){
         if (a.onScreen > b.onScreen) {
             return -1;
@@ -123,7 +123,7 @@ function currentSection(){
             return 1;
         }
     });
-    
+
     if (contenders[0]) {
         return contenders[0].elem.getAttribute("id");
     }
@@ -160,7 +160,7 @@ setInterval(function(){
 [].slice.call(document.querySelectorAll(".members-container li")).forEach(function(elem){
     var photoElem = elem.querySelector(".member-photo");
     var name = elem.querySelector(".member-name").textContent;
-    
+
     photoElem.src = "/assets/img/members/" + name + ".jpg";
 });
 
@@ -168,11 +168,11 @@ setInterval(function(){
 
 [].slice.call(document.querySelectorAll("section[data-bg]")).forEach(function(elem){
     var imgUrl = elem.dataset.bg;
-    
+
     var bgElem = document.createElement("div");
     bgElem.style.backgroundImage = "url(" + imgUrl + ")";
     bgElem.classList.add("section-bg-image");
-    
+
     elem.appendChild(bgElem);
 });
 
@@ -189,13 +189,13 @@ function displayTwitterStream(data){
     if (!Array.isArray(data)) {
         data = [data];
     }
-    
+
     data.forEach(function(post){
         var elem = document.createElement("li");
-        
+
         var body = decodeHTML(post.description);
         if (body.indexOf("http://t.co/") !== -1) body = body.substring(0, body.lastIndexOf("http://t.co/"));
-        
+
         elem.innerHTML = "<p>" + twttr.txt.autoLink(body) + "</p>";
         if (post.enclosure && post.enclosure.type === "image/png") {
             elem.innerHTML = "<img src='" + post.enclosure.url + "'>" + elem.innerHTML;
@@ -203,19 +203,19 @@ function displayTwitterStream(data){
                 layoutNewsMsnry();
             });
         }
-        
+
         [].slice.call(elem.querySelectorAll("a")).forEach(function(elem){
             elem.setAttribute("target", "_blank");
         });
-        
+
         newsElem.appendChild(elem);
     });
-        
+
     layoutNewsMsnry();
 }
 
 if (
-    localStorage.getItem("twitterStreamData") && 
+    localStorage.getItem("twitterStreamData") &&
     new Date().getTime() - Number(localStorage.getItem("twitterStreamCacheDate")) < 600000 /* 10 minutes */
 ) {
     displayTwitterStream(JSON.parse(localStorage.getItem("twitterStreamData")));
@@ -226,7 +226,7 @@ if (
         r = JSON.parse(r);
         var twitterData = r.query.results.item;
         displayTwitterStream(twitterData);
-        
+
         localStorage.setItem("twitterStreamData", JSON.stringify(twitterData));
         localStorage.setItem("twitterStreamCacheDate", new Date().getTime());
     });
@@ -234,20 +234,20 @@ if (
 
 /* initialisms */
 
-function initialismChange(){
+function initialismChange() {
     var wordElems = [].slice.call(initialismWordElem.children);
-    
+
     if (initialismWordElem.querySelector(".current")) {
         var oldWordElem = initialismWordElem.querySelector(".current");
         var newWordElem = wordElems[wordElems.indexOf(oldWordElem) + 1] || wordElems[0];
         var nextWordElem = wordElems[wordElems.indexOf(newWordElem) + 1] || wordElems[0];
-        
+
         oldWordElem.classList.remove("current");
         oldWordElem.classList.add("prev");
-        
+
         newWordElem.classList.remove("next");
         newWordElem.classList.add("current");
-        
+
         nextWordElem.classList.remove("prev");
         nextWordElem.classList.add("next");
     } else {
@@ -256,8 +256,14 @@ function initialismChange(){
     }
 }
 
-initialismChange();
-setInterval(initialismChange, 2000);
+function initialismInterval() {
+    for (var i = 0; i < 11; i++) {
+        setTimeout(initialismChange, i * 100);
+    }
+}
+
+initialismInterval();
+setInterval(initialismInterval, 4000);
 
 /* smoothScroll stuff */
 
@@ -292,21 +298,21 @@ var contactInfo = {
 Object.keys(contactInfo).forEach(function(key){
     var info = contactInfo[key];
     var targets = document.querySelectorAll(".contact_" + key);
-    
+
     var attrKeys = Object.keys(info).filter(function(key){
         return key !== "$vars";
     });
-    
+
     var varKeys = Object.keys(info.$vars);
-    
+
     [].slice.call(targets).forEach(function(elem){
         attrKeys.forEach(function(attrKey){
             elem[attrKey] = info[attrKey];
         });
-        
+
         varKeys.forEach(function(varKey){
             var varVal = info.$vars[varKey];
-            
+
             elem.textContent = elem.textContent.replace(new RegExp("{" + varKey + "}", "g"), varVal);
         });
     });
