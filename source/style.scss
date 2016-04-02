@@ -1,3 +1,5 @@
+@import "variables";
+
 *, :before, :after {
     box-sizing: inherit;
     margin: 0;
@@ -16,6 +18,11 @@
     max-width: 100%;
 }
 
+::selection {
+    color: $white;
+    background-color: $red;
+}
+
 html, body {
     width: 100%;
     height: 100%;
@@ -23,16 +30,16 @@ html, body {
 
 body {
     box-sizing: border-box;
-    background-color: #f1f1f1;
+    background-color: $offwhite;
     font-family: "Titillium Web", sans-serif;
     font-size: 17px;
-    color: #333;
+    color: $darkgrey;
     overflow-x: hidden;
     line-height: 1.5;
 }
 
 header {
-    background-color: #ff3539;
+    background-color: $red;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -50,13 +57,13 @@ a {
 }
 
 p a {
-    color: #ff3539;
+    color: $red;
 
     transition-property: color, background;
 
     &:hover {
-        color: #fff;
-        background-color: #ff3539;
+        color: $white;
+        background-color: $red;
     }
 }
 
@@ -76,8 +83,8 @@ section {
     }
 
     &[data-bg] {
-        color: #fff;
-        background-color: #000;
+        color: $white;
+        background-color: $black;
 
         > *:not(.section-bg-image) {
             position: relative;
@@ -132,7 +139,7 @@ aside {
     position: absolute;
     top: 500px;
     right: 0;
-    background-color: #fff;
+    background-color: $white;
     width: 70px;
     height: 100%;
     overflow: hidden;
@@ -170,13 +177,13 @@ input, textarea, button {
     padding: 10px 15px;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, .2);
-    color: #fff;
+    color: $white;
 
     transition-property: background, color;
 
     &:focus {
-        background-color: #fff;
-        color: #333;
+        background-color: $white;
+        color: $darkgrey;
         outline: none;
     }
 }
@@ -203,8 +210,8 @@ button {
     }
 
     &:hover {
-        background: #ff3539;
-        color: #fff;
+        background: $red;
+        color: $white;
     }
 }
 
@@ -225,8 +232,8 @@ section.wide .banner-links-container {
 
 .banner-link {
     width: calc(50% - 10px);
-    background-color: #ddd;
-    color: #555;
+    background-color: $lightgrey;
+    color: $grey;
     padding: 20px 50px;
     font-size: 2em;
     flex-shrink: 0;
@@ -252,8 +259,8 @@ section.wide .banner-links-container {
         }
 
         &:hover {
-            background-color: #ff3539;
-            color: #fff;
+            background-color: $red;
+            color: $white;
 
             &:after {
                 transform: translateX(10px);
@@ -379,7 +386,7 @@ a.button {
 
     &.big {
         background-color: #83c4ff;
-        color: #fff;
+        color: $white;
         text-align: center;
         padding: 30px;
         padding-top: 170px;
@@ -402,7 +409,7 @@ a.button {
     margin-bottom: 50px;
 
     li {
-        background-color: #fff;
+        background-color: $white;
         display: block;
         width: 350px;
         margin: 5px 0;
@@ -445,8 +452,8 @@ footer {
 }
 
 .initialism-container {
-    background-color: #ff3539;
-    color: #fff;
+    background-color: $red;
+    color: $white;
     font-size: 4em;
     font-weight: 300;
     padding: 100px;
@@ -505,7 +512,7 @@ footer {
 
 .comic-sans {
     font-family: "Comic Sans MS", sans-serif;
-    color: #ff3539;
+    color: $red;
 }
 
 @media only screen and (max-width: 720px) {

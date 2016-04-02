@@ -15,7 +15,7 @@ gulp.task("sass", function() {
     var autoprefixer = require("autoprefixer-core");
     var sass = require("gulp-sass");
 
-    gulp.src("./source/*.scss")
+    gulp.src(["./source/*.scss", "!./source/variables.scss"])
         .pipe(sass().on("error", sass.logError))
         .pipe(postcss([ autoprefixer({ browsers: ["last 2 versions"] }) ]))
         .pipe(gulp.dest("./"));
