@@ -136,18 +136,40 @@ ul, ol {
 }
 
 aside {
+    $aside-width: 70px;
+
     position: absolute;
     top: 500px;
     right: 0;
     background-color: $white;
-    width: 70px;
+    width: $aside-width;
     height: 100%;
     overflow: hidden;
     z-index: 2;
 
+    .nav-logo, nav {
+        position: absolute;
+        left: 0;
+
+        transform: translateY(- $aside-width);
+        transition-property: transform;
+    }
+
+    .nav-logo {
+        top: 0;
+    }
+
+    nav {
+        top: $aside-width;
+    }
+
     &.float {
         position: fixed;
         top: 0;
+
+        .nav-logo, nav {
+            transform: translateY(0);
+        }
     }
 }
 
