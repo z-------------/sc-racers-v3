@@ -31,7 +31,7 @@ html, body {
 body {
     box-sizing: border-box;
     background-color: $offwhite;
-    font-family: "Titillium Web", sans-serif;
+    font-family: $font-titillium;
     font-size: 17px;
     color: $darkgrey;
     overflow-x: hidden;
