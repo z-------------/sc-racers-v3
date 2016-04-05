@@ -19,8 +19,8 @@
 }
 
 ::selection {
-    color: $white;
-    background-color: $red;
+    color: $color-white;
+    background-color: $color-red;
 }
 
 html, body {
@@ -30,16 +30,16 @@ html, body {
 
 body {
     box-sizing: border-box;
-    background-color: $offwhite;
+    background-color: $color-offwhite;
     font-family: $font-titillium;
     font-size: 17px;
-    color: $darkgrey;
+    color: $color-darkgrey;
     overflow-x: hidden;
     line-height: 1.5;
 }
 
 header {
-    background-color: $red;
+    background-color: $color-red;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -57,13 +57,13 @@ a {
 }
 
 p a {
-    color: $red;
+    color: $color-red;
 
     transition-property: color, background;
 
     &:hover {
-        color: $white;
-        background-color: $red;
+        color: $color-white;
+        background-color: $color-red;
     }
 }
 
@@ -83,8 +83,8 @@ section {
     }
 
     &[data-bg] {
-        color: $white;
-        background-color: $black;
+        color: $color-white;
+        background-color: $color-black;
 
         > *:not(.section-bg-image) {
             position: relative;
@@ -141,7 +141,7 @@ aside {
     position: absolute;
     top: 500px;
     right: 0;
-    background-color: $white;
+    background-color: $color-white;
     width: $aside-width;
     height: 100%;
     overflow: hidden;
@@ -199,13 +199,13 @@ input, textarea, button {
     padding: 10px 15px;
     margin-bottom: 20px;
     background: rgba(255, 255, 255, .2);
-    color: $white;
+    color: $color-white;
 
     transition-property: background, color;
 
     &:focus {
-        background-color: $white;
-        color: $darkgrey;
+        background-color: $color-white;
+        color: $color-darkgrey;
         outline: none;
     }
 }
@@ -232,8 +232,8 @@ button {
     }
 
     &:hover {
-        background: $red;
-        color: $white;
+        background: $color-red;
+        color: $color-white;
     }
 }
 
@@ -254,8 +254,8 @@ section.wide .banner-links-container {
 
 .banner-link {
     width: calc(50% - 10px);
-    background-color: $lightgrey;
-    color: $grey;
+    background-color: $color-lightgrey;
+    color: $color-grey;
     padding: 20px 50px;
     font-size: 2em;
     flex-shrink: 0;
@@ -281,8 +281,8 @@ section.wide .banner-links-container {
         }
 
         &:hover {
-            background-color: $red;
-            color: $white;
+            background-color: $color-red;
+            color: $color-white;
 
             &:after {
                 transform: translateX(10px);
@@ -408,7 +408,7 @@ a.button {
 
     &.big {
         background-color: #83c4ff;
-        color: $white;
+        color: $color-white;
         text-align: center;
         padding: 30px;
         padding-top: 170px;
@@ -431,7 +431,7 @@ a.button {
     margin-bottom: 50px;
 
     li {
-        background-color: $white;
+        background-color: $color-white;
         display: block;
         width: 350px;
         margin: 5px 0;
@@ -474,8 +474,8 @@ footer {
 }
 
 .initialism-container {
-    background-color: $red;
-    color: $white;
+    background-color: $color-red;
+    color: $color-white;
     font-size: 4em;
     font-weight: 300;
     padding: 100px;
@@ -497,7 +497,7 @@ footer {
 }
 
 .initialism-letter {
-    font-family: "Titillium Web", sans-serif;
+    font-family: $font-titillium;
     font-size: 5em;
     margin-right: 30px;
 }
@@ -534,7 +534,7 @@ footer {
 
 .comic-sans {
     font-family: "Comic Sans MS", sans-serif;
-    color: $red;
+    color: $color-red;
 }
 
 @media only screen and (max-width: 720px) {
